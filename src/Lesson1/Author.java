@@ -23,11 +23,22 @@ public class Author {
     public int getSize() {
         return size;
     }
+    public String getName() {
+        return lastName+" "+firstName.charAt(0)+"."+middleName.charAt(0)+".";
+    }
     @Override
     public String toString() {
         return lastName+" "+firstName+" "+middleName;
     }
-    public String getName() {
-        return lastName+" "+firstName.charAt(0)+"."+middleName.charAt(0)+".";
+    @Override
+    public boolean equals(Object other) {
+        if (this.getClass() != other.getClass()) {
+            return false;
+        }
+        return this.toString().equals(other.toString());
+    }
+    @Override
+    public int hashCode() {
+        return java.util.Objects.hash(lastName);
     }
 }
